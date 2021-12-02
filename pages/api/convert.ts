@@ -21,10 +21,12 @@ export default async function handler(
 
   const result = YAML.parse(response.data);
 
+  const thirtyMinutes = 60 * 30;
+  const sixtyMinutes = 60 * 60;
+
   res
       .status(200)
-      .setHeader('s-maxage', 60 * 30) // 30min
-      .setHeader('stale-while-revalidate', 60 * 60) // 60min
+      .setHeader('Cache-Control', `s-maxage=${thirtyMinutes}, stale-while-revalidate=${sixtyMinutes}`)
       .json(result);
 }
 
