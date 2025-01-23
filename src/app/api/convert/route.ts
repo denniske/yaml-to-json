@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
                 'Cache-Control': `s-maxage=${thirtyMinutes}, stale-while-revalidate=${sixtyMinutes}`,
             },
         });
-    } catch (error) {
+    } catch (error: any) {
         // Handle errors
         return NextResponse.json(
             { error: 'Failed to fetch or parse data', details: error.message },
