@@ -2,22 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 import YAML from 'yaml';
 
-const ALLOWED_ORIGINS = [
-    'https://app.aoe2companion.com',
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:3001',
-];
+// const ALLOWED_ORIGINS = [
+//     'https://app.aoe2companion.com',
+//     'http://localhost:8081',
+//     'http://127.0.0.1:8081',
+// ];
 
 function getCORSHeaders(origin: string | null): Record<string, string> {
-    if (origin && ALLOWED_ORIGINS.includes(origin)) {
-        return {
-            'Access-Control-Allow-Origin': origin,
-            'Vary': 'Origin',
-        };
-    }
-    return {};
+    return {
+        'Access-Control-Allow-Origin': '*',
+    };
+    // if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    //     return {
+    //         'Access-Control-Allow-Origin': origin,
+    //         'Vary': 'Origin',
+    //     };
+    // }
+    // return {};
 }
 
 export async function GET(req: NextRequest) {
